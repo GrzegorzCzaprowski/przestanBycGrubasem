@@ -1,7 +1,10 @@
 package main
 
 import (
-	handlers "github.com/GrzegorzCzaprowski/przestanBycGrubasem/handlers/users"
+	"log"
+	"net/http"
+
+	userHandlers "github.com/GrzegorzCzaprowski/przestanBycGrubasem/handlers/users"
 	"github.com/GrzegorzCzaprowski/przestanBycGrubasem/models"
 	"github.com/julienschmidt/httprouter"
 )
@@ -9,10 +12,17 @@ import (
 func main() {
 	router := httprouter.New()
 
-	var model models.Model = 3
+	var baza []models.User
 
-	userHandler := handlers.UserHandler{M: model}
+	var model models.Model
+	model.Db = baza
+
+	userHandler := userHandlers.UserHandler{M: model}
 
 	router.POST("/user/post", userHandler.Post)
-	router.POST("/user/login", userHandler.Log)
+	router.POST("/user/login", userHandler.Login)
+	router.POST("/user/logout", userHandler.Logout)
+	router.POST("/weight/add", userHandler.Logout)
+
+	log.Fatal(http.ListenAndServe(":8000", router))
 }
