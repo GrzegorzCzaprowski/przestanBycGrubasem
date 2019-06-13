@@ -10,11 +10,17 @@ import (
 )
 
 func (h UserHandler) Post(w http.ResponseWriter, req *http.Request, _ httprouter.Params) {
-
 	user := models.User{}
 	err := json.NewDecoder(req.Body).Decode(&user)
 	if err != nil {
 		log.Println("error with decoding user from json: ", err)
+		w.WriteHeader(500)
+		return
+	}
+	h.M.PostUser(user)
+	err = json.NewEncoder(w).Encode(user)
+	if err != nil {
+		log.Println("error with encoding to json: ", err)
 		w.WriteHeader(500)
 		return
 	}
