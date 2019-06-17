@@ -1,0 +1,6 @@
+Zalogowanie się z ciastkiem:
+curl -X POST --cookie "cookie-name=MTU2MDUwMzY4NHxEdi1CQkFFQ180SUFBUkFCRUFBQUhmLUNBQUVHYzNSeWFXNW5EQWNBQld4dloyVmtCR0p2YjJ3Q0FnQUJ8cavydVZ9x1dpsuDTv_XW05RpCcbgriRVhCEOpEyIsfY=;" http://localhost:8000/weight/add
+
+
+
+"cookie-name=MTU2MDc1NTAxNnxEdi1CQkFFQ180SUFBUkFCRUFBQUhmLUNBQUVHYzNSeWFXNW5EQWNBQld4dloyVmtCR0p2YjJ3Q0FnQUJ8RviadFCBiXCzWr_pfvj13eKQxRGskqN-KoK6Ezi91Fc=;"

@@ -17,7 +17,7 @@ func (h UserHandler) Post(w http.ResponseWriter, req *http.Request, _ httprouter
 		w.WriteHeader(500)
 		return
 	}
-	h.M.PostUser(user)
+	user = h.M.PostUser(user)
 	err = json.NewEncoder(w).Encode(user)
 	if err != nil {
 		log.Println("error with encoding to json: ", err)

@@ -1,11 +1,27 @@
 package handlers
 
 import (
-	"errors"
+	"net/http"
 
-	"github.com/GrzegorzCzaprowski/przestanBycGrubasem/models"
+	"github.com/julienschmidt/httprouter"
 )
 
-func Add(user models.User, weight models.Weight) error {
-	return errors.New("er zastepczy")
+func (h WeightHandler) Add(w http.ResponseWriter, req *http.Request, _ httprouter.Params) {
+	session, err := Store.Get(req, "cookie-name")
+	if err != nil {
+		http.Error(w, err.Error(), http.StatusInternalServerError)
+		return
+	}
+
+	if auth, ok := session.Values["loged"].(bool); !ok || !auth {
+		http.Error(w, "You need to log in first!", http.StatusForbidden)
+		return
+	}
+
+	req.
+
+		// Print secret message
+		fmt.Println("zalogowal sie")
+
+	h.M.AddWeight
 }
