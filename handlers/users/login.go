@@ -24,6 +24,12 @@ func (h UserHandler) Login(w http.ResponseWriter, req *http.Request, _ httproute
 		// ...
 
 		// Set user as authenticated
+
+		cookie := &http.Cookie{
+			Name:  "cookie-name",
+			Value: user.Email,
+		}
+
 		log.Println("password is correct")
 		session.Values["loged"] = true
 		session.Save(req, w)

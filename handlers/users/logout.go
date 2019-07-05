@@ -1,6 +1,7 @@
 package handlers
 
 import (
+	"log"
 	"net/http"
 
 	"github.com/julienschmidt/httprouter"
@@ -12,4 +13,5 @@ func (h UserHandler) Logout(w http.ResponseWriter, req *http.Request, _ httprout
 	// Revoke users authentication
 	session.Values["loged"] = false
 	session.Save(req, w)
+	log.Println("user logged out")
 }
